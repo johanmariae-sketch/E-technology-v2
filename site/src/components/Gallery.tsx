@@ -11,9 +11,7 @@ const catalog = rawCatalog as ProductCatalog;
 const categoryLabels: Record<string, string> = {
   all: "Todos",
   phones: "Telefonos",
-  tablets: "Tablets",
-  accessories: "Accesorios",
-  wearables: "Wearables",
+  accessories: "AirPods",
 };
 
 export default function ProductGrid() {

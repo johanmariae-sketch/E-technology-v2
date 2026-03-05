@@ -1,15 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Smartphone, Watch, Headphones, Tablet } from "lucide-react";
+import { Smartphone, Headphones } from "lucide-react";
 import type { ProductCatalog } from "@/types/content";
 import rawCatalog from "@/data/products.json";
 const catalog = rawCatalog as ProductCatalog;
 
 const phonesCount = catalog.products.filter(p => p.category === "phones").length;
-const tabletsCount = catalog.products.filter(p => p.category === "tablets").length;
 const accessoriesCount = catalog.products.filter(p => p.category === "accessories").length;
-const wearablesCount = catalog.products.filter(p => p.category === "wearables").length;
 
 const categories = [
   {
@@ -20,24 +18,10 @@ const categories = [
     href: "#products",
   },
   {
-    icon: Watch,
-    title: "Wearables",
-    subtitle: `${wearablesCount} productos disponibles`,
-    gradient: "from-[#7C3AED] to-[#A78BFA]",
-    href: "#products",
-  },
-  {
     icon: Headphones,
-    title: "Accesorios",
+    title: "AirPods",
     subtitle: `${accessoriesCount} productos disponibles`,
     gradient: "from-[#059669] to-[#34D399]",
-    href: "#products",
-  },
-  {
-    icon: Tablet,
-    title: "Tablets",
-    subtitle: `${tabletsCount} productos disponibles`,
-    gradient: "from-[#DC2626] to-[#F87171]",
     href: "#products",
   },
 ];

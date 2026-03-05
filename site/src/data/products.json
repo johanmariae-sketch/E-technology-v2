@@ -8,7 +8,7 @@
       "price": 150000,
       "priceFormatted": "RD$150,000",
       "category": "phones",
-      "image": "/products/iphone-17-pro-max.png",
+      "image": "/products/iphone-17-pro-max.jpg",
       "whatsappUrl": "https://wa.me/18494099160?text=Hola%2C%20me%20interesa%20el%20iPhone%2017%20Pro%20Max%202TB%20a%20RD%24150%2C000",
       "isNew": true
     },
@@ -20,7 +20,7 @@
       "price": 121000,
       "priceFormatted": "RD$121,000",
       "category": "phones",
-      "image": "/products/iphone-17-pro-max.png",
+      "image": "/products/iphone-17-pro-max.jpg",
       "whatsappUrl": "https://wa.me/18494099160?text=Hola%2C%20me%20interesa%20el%20iPhone%2017%20Pro%20Max%201TB%20a%20RD%24121%2C000",
       "isNew": true
     },
@@ -32,7 +32,7 @@
       "price": 108000,
       "priceFormatted": "RD$108,000",
       "category": "phones",
-      "image": "/products/iphone-17-pro-max.png",
+      "image": "/products/iphone-17-pro-max.jpg",
       "whatsappUrl": "https://wa.me/18494099160?text=Hola%2C%20me%20interesa%20el%20iPhone%2017%20Pro%20Max%20512GB%20a%20RD%24108%2C000",
       "isNew": true
     },
@@ -44,7 +44,7 @@
       "price": 93000,
       "priceFormatted": "RD$93,000",
       "category": "phones",
-      "image": "/products/iphone-17-pro-max.png",
+      "image": "/products/iphone-17-pro-max.jpg",
       "whatsappUrl": "https://wa.me/18494099160?text=Hola%2C%20me%20interesa%20el%20iPhone%2017%20Pro%20Max%20256GB%20a%20RD%2493%2C000",
       "isNew": true
     },
@@ -56,7 +56,7 @@
       "price": 112000,
       "priceFormatted": "RD$112,000",
       "category": "phones",
-      "image": "/products/iphone-17-pro.png",
+      "image": "/products/iphone-17-pro.jpg",
       "whatsappUrl": "https://wa.me/18494099160?text=Hola%2C%20me%20interesa%20el%20iPhone%2017%20Pro%201TB%20a%20RD%24112%2C000",
       "isNew": true
     },
@@ -68,7 +68,7 @@
       "price": 98000,
       "priceFormatted": "RD$98,000",
       "category": "phones",
-      "image": "/products/iphone-17-pro.png",
+      "image": "/products/iphone-17-pro.jpg",
       "whatsappUrl": "https://wa.me/18494099160?text=Hola%2C%20me%20interesa%20el%20iPhone%2017%20Pro%20512GB%20a%20RD%2498%2C000",
       "isNew": true
     },
@@ -80,7 +80,7 @@
       "price": 85000,
       "priceFormatted": "RD$85,000",
       "category": "phones",
-      "image": "/products/iphone-17-pro.png",
+      "image": "/products/iphone-17-pro.jpg",
       "whatsappUrl": "https://wa.me/18494099160?text=Hola%2C%20me%20interesa%20el%20iPhone%2017%20Pro%20256GB%20a%20RD%2485%2C000",
       "isNew": true
     },
@@ -92,7 +92,7 @@
       "price": 83000,
       "priceFormatted": "RD$83,000",
       "category": "phones",
-      "image": "/products/iphone-17-air.png",
+      "image": "/products/iphone-17-air.jpg",
       "whatsappUrl": "https://wa.me/18494099160?text=Hola%2C%20me%20interesa%20el%20iPhone%2017%20Air%20512GB%20a%20RD%2483%2C000",
       "isNew": true
     },
@@ -104,7 +104,7 @@
       "price": 70000,
       "priceFormatted": "RD$70,000",
       "category": "phones",
-      "image": "/products/iphone-17-air.png",
+      "image": "/products/iphone-17-air.jpg",
       "whatsappUrl": "https://wa.me/18494099160?text=Hola%2C%20me%20interesa%20el%20iPhone%2017%20Air%20256GB%20a%20RD%2470%2C000",
       "isNew": true
     },
@@ -116,7 +116,7 @@
       "price": 65000,
       "priceFormatted": "RD$65,000",
       "category": "phones",
-      "image": "/products/iphone-17.png",
+      "image": "/products/iphone-17.jpg",
       "whatsappUrl": "https://wa.me/18494099160?text=Hola%2C%20me%20interesa%20el%20iPhone%2017%20256GB%20a%20RD%2465%2C000",
       "isNew": true
     },
@@ -128,7 +128,7 @@
       "price": 86500,
       "priceFormatted": "RD$86,500",
       "category": "phones",
-      "image": "/products/iphone-16-pro-max.png",
+      "image": "/products/iphone-16-pro-max.jpg",
       "whatsappUrl": "https://wa.me/18494099160?text=Hola%2C%20me%20interesa%20el%20iPhone%2016%20Pro%20Max%201TB%20a%20RD%2486%2C500",
       "isNew": false
     },
@@ -140,7 +140,7 @@
       "price": 80000,
       "priceFormatted": "RD$80,000",
       "category": "phones",
-      "image": "/products/iphone-16-pro-max.png",
+      "image": "/products/iphone-16-pro-max.jpg",
       "whatsappUrl": "https://wa.me/18494099160?text=Hola%2C%20me%20interesa%20el%20iPhone%2016%20Pro%20Max%20512GB%20a%20RD%2480%2C000",
       "isNew": false
     },
@@ -152,7 +152,7 @@
       "price": 72500,
       "priceFormatted": "RD$72,500",
       "category": "phones",
-      "image": "/products/iphone-16-pro-max.png",
+      "image": "/products/iphone-16-pro-max.jpg",
       "whatsappUrl": "https://wa.me/18494099160?text=Hola%2C%20me%20interesa%20el%20iPhone%2016%20Pro%20Max%20256GB%20a%20RD%2472%2C500",
       "isNew": false
     },
@@ -164,7 +164,7 @@
       "price": 69000,
       "priceFormatted": "RD$69,000",
       "category": "phones",
-      "image": "/products/iphone-16-pro.png",
+      "image": "/products/iphone-16-pro.jpg",
       "whatsappUrl": "https://wa.me/18494099160?text=Hola%2C%20me%20interesa%20el%20iPhone%2016%20Pro%20512GB%20a%20RD%2469%2C000",
       "isNew": false
     },
@@ -176,7 +176,7 @@
       "price": 65000,
       "priceFormatted": "RD$65,000",
       "category": "phones",
-      "image": "/products/iphone-16-pro.png",
+      "image": "/products/iphone-16-pro.jpg",
       "whatsappUrl": "https://wa.me/18494099160?text=Hola%2C%20me%20interesa%20el%20iPhone%2016%20Pro%20256GB%20a%20RD%2465%2C000",
       "isNew": false
     },
@@ -188,7 +188,7 @@
       "price": 58000,
       "priceFormatted": "RD$58,000",
       "category": "phones",
-      "image": "/products/iphone-16-pro.png",
+      "image": "/products/iphone-16-pro.jpg",
       "whatsappUrl": "https://wa.me/18494099160?text=Hola%2C%20me%20interesa%20el%20iPhone%2016%20Pro%20128GB%20a%20RD%2458%2C000",
       "isNew": false
     },
@@ -200,7 +200,7 @@
       "price": 62000,
       "priceFormatted": "RD$62,000",
       "category": "phones",
-      "image": "/products/iphone-16.png",
+      "image": "/products/iphone-16.jpg",
       "whatsappUrl": "https://wa.me/18494099160?text=Hola%2C%20me%20interesa%20el%20iPhone%2016%20Plus%20256GB%20a%20RD%2462%2C000",
       "isNew": false
     },
@@ -212,7 +212,7 @@
       "price": 58000,
       "priceFormatted": "RD$58,000",
       "category": "phones",
-      "image": "/products/iphone-16.png",
+      "image": "/products/iphone-16.jpg",
       "whatsappUrl": "https://wa.me/18494099160?text=Hola%2C%20me%20interesa%20el%20iPhone%2016%20Plus%20128GB%20a%20RD%2458%2C000",
       "isNew": false
     },
@@ -224,7 +224,7 @@
       "price": 53000,
       "priceFormatted": "RD$53,000",
       "category": "phones",
-      "image": "/products/iphone-16.png",
+      "image": "/products/iphone-16.jpg",
       "whatsappUrl": "https://wa.me/18494099160?text=Hola%2C%20me%20interesa%20el%20iPhone%2016%20256GB%20a%20RD%2453%2C000",
       "isNew": false
     },
@@ -236,7 +236,7 @@
       "price": 50000,
       "priceFormatted": "RD$50,000",
       "category": "phones",
-      "image": "/products/iphone-16.png",
+      "image": "/products/iphone-16.jpg",
       "whatsappUrl": "https://wa.me/18494099160?text=Hola%2C%20me%20interesa%20el%20iPhone%2016%20128GB%20a%20RD%2450%2C000",
       "isNew": false
     },
@@ -248,7 +248,7 @@
       "price": 8495,
       "priceFormatted": "RD$8,495",
       "category": "accessories",
-      "image": "/products/airpods-4.png",
+      "image": "/products/airpods-4.jpg",
       "whatsappUrl": "https://wa.me/18494099160?text=Hola%2C%20me%20interesa%20los%20AirPods%204th%20Gen%20a%20RD%248%2C495",
       "isNew": false
     },
@@ -260,7 +260,7 @@
       "price": 12495,
       "priceFormatted": "RD$12,495",
       "category": "accessories",
-      "image": "/products/airpods-4.png",
+      "image": "/products/airpods-4.jpg",
       "whatsappUrl": "https://wa.me/18494099160?text=Hola%2C%20me%20interesa%20los%20AirPods%204th%20Gen%20con%20Cancelacion%20a%20RD%2412%2C495",
       "isNew": false
     },
@@ -272,7 +272,7 @@
       "price": 12495,
       "priceFormatted": "RD$12,495",
       "category": "accessories",
-      "image": "/products/airpods-pro.png",
+      "image": "/products/airpods-pro.jpg",
       "whatsappUrl": "https://wa.me/18494099160?text=Hola%2C%20me%20interesa%20los%20AirPods%20Pro%202da%20Gen%20Type%20C%20a%20RD%2412%2C495",
       "isNew": false
     },
@@ -284,7 +284,7 @@
       "price": 18995,
       "priceFormatted": "RD$18,995",
       "category": "accessories",
-      "image": "/products/airpods-pro.png",
+      "image": "/products/airpods-pro.jpg",
       "whatsappUrl": "https://wa.me/18494099160?text=Hola%2C%20me%20interesa%20los%20AirPods%20Pro%203ra%20Gen%20Type%20C%20a%20RD%2418%2C995",
       "isNew": true
     },
@@ -296,7 +296,7 @@
       "price": 21995,
       "priceFormatted": "RD$21,995",
       "category": "accessories",
-      "image": "/products/airpods-max.png",
+      "image": "/products/airpods-max.jpg",
       "whatsappUrl": "https://wa.me/18494099160?text=Hola%2C%20me%20interesa%20los%20AirPods%20Max%201ra%20Gen%20a%20RD%2421%2C995",
       "isNew": false
     },
@@ -308,7 +308,7 @@
       "price": 28495,
       "priceFormatted": "RD$28,495",
       "category": "accessories",
-      "image": "/products/airpods-max.png",
+      "image": "/products/airpods-max.jpg",
       "whatsappUrl": "https://wa.me/18494099160?text=Hola%2C%20me%20interesa%20los%20AirPods%20Max%202da%20Gen%20a%20RD%2428%2C495",
       "isNew": true
     }

@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: #FAFBFF;
+  --color-foreground: #0F172A;
+  --color-primary: #1B2D6E;
+  --color-primary-light: #2B4BAA;
+  --color-accent: #3B7DFF;
+  --color-accent-light: #6BA1FF;
+  --color-surface: #F0F4FF;
+  --color-surface-dark: #E2EAFF;
+  --color-muted: #64748B;
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-danger: #EF4444;
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-space);
+  --font-mono: var(--font-mono);
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+}
+
+/* Magnetic button feel */
+.btn-magnetic {
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease;
+}
+.btn-magnetic:hover {
+  transform: scale(1.03) translateY(-1px);
+}
+.btn-magnetic:active {
+  transform: scale(0.98);
+}
+
+/* Card hover lift */
+.card-lift {
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease;
+}
+.card-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -12px rgba(27, 45, 110, 0.15);
+}
+
+/* Rounded system */
+.rounded-container {
+  border-radius: 2rem;
+}
+
+/* Hide scrollbar for carousels */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-surface-dark);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}
+
+/* Star rating */
+.star-filled {
+  color: #F59E0B;
+}

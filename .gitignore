@@ -1,0 +1,35 @@
+node_modules/
+.next/
+dist/
+*.tsbuildinfo
+
+# Scraped Instagram data (large files, re-downloadable)
+scraper/output/
+e__technologystore/
+
+# Instagram media in site (copied by processor, re-generable)
+site/public/instagram/*.jpg
+site/public/instagram/*.jpeg
+site/public/instagram/*.png
+site/public/instagram/*.mp4
+site/public/instagram/*.webp
+!site/public/instagram/.gitkeep
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Env
+.env
+.env.*
+
+# OS
+.DS_Store
+*.pem
+
+# Vercel
+.vercel
+
+# Instaloader mangled paths
+C：*

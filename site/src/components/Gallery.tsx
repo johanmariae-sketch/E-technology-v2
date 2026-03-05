@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, Sparkles } from "lucide-react";
+import { MessageCircle, Sparkles, X } from "lucide-react";
 import Image from "next/image";
 import type { Product, ProductCatalog } from "@/types/content";
 import rawCatalog from "@/data/products.json";
@@ -16,6 +16,7 @@ const categoryLabels: Record<string, string> = {
 
 export default function ProductGrid() {
   const [activeCategory, setActiveCategory] = useState("all");
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
   const categories = ["all", ...catalog.categories];
   const filteredProducts =
@@ -85,7 +86,7 @@ export default function ProductGrid() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.04, duration: 0.4 }}
               >
-                <ProductCard product={product} />
+                <ProductCard product={product} onImageClick={() => setSelectedProduct(product)} />
               </motion.div>
             ))}
           </motion.div>
@@ -96,15 +97,25 @@ export default function ProductGrid() {
           {filteredProducts.length} producto{filteredProducts.length !== 1 ? "s" : ""} disponible{filteredProducts.length !== 1 ? "s" : ""}
         </p>
       </div>
+
+      {/* Product Detail Modal */}
+      <AnimatePresence>
+        {selectedProduct && (
+          <ProductModal product={selectedProduct} onClose={() => setSelectedProduct(null)} />
+        )}
+      </AnimatePresence>
     </section>
   );
 }
 
-function ProductCard({ product }: { product: Product }) {
+function ProductCard({ product, onImageClick }: { product: Product; onImageClick: () => void }) {
   return (
     <div className="card-lift group bg-white rounded-2xl sm:rounded-[1.5rem] border border-[#E2EAFF] overflow-hidden flex flex-col">
       {/* Image */}
-      <div className="relative aspect-square bg-gradient-to-br from-[#F8FAFF] to-[#EEF2FF] overflow-hidden p-4 sm:p-6">
+      <button
+        onClick={onImageClick}
+        className="relative aspect-square bg-gradient-to-br from-[#F8FAFF] to-[#EEF2FF] overflow-hidden p-4 sm:p-6 cursor-pointer"
+      >
         <Image
           src={product.image}
           alt={product.fullName}
@@ -121,7 +132,7 @@ function ProductCard({ product }: { product: Product }) {
             </span>
           )}
         </div>
-      </div>
+      </button>
 
       {/* Info */}
       <div className="p-3 sm:p-4 flex flex-col flex-1">
@@ -159,5 +170,78 @@ function ProductCard({ product }: { product: Product }) {
         </a>
       </div>
     </div>
+  );
+}
+
+function ProductModal({ product, onClose }: { product: Product; onClose: () => void }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+      onClick={onClose}
+    >
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.9, y: 20 }}
+        transition={{ type: "spring", duration: 0.5 }}
+        className="relative bg-white rounded-3xl overflow-hidden max-w-lg w-full shadow-2xl"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Close button */}
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-black/10 hover:bg-black/20 transition-colors"
+        >
+          <X className="w-4 h-4 text-[#0F172A]" />
+        </button>
+
+        {/* Image */}
+        <div className="relative aspect-square bg-gradient-to-br from-[#F8FAFF] to-[#EEF2FF]">
+          <Image
+            src={product.image}
+            alt={product.fullName}
+            fill
+            className="object-contain p-8"
+            sizes="(max-width: 512px) 100vw, 512px"
+          />
+          {product.isNew && (
+            <span className="absolute top-4 left-4 inline-flex items-center gap-1 bg-[#10B981] text-white text-xs font-bold px-3 py-1 rounded-lg uppercase tracking-wider">
+              <Sparkles className="w-3 h-3" /> Nuevo
+            </span>
+          )}
+        </div>
+
+        {/* Details */}
+        <div className="p-6">
+          <span className="text-[#3B7DFF] text-xs font-semibold font-[family-name:var(--font-mono)] uppercase tracking-wider">
+            {categoryLabels[product.category] || product.category}
+          </span>
+          <h3 className="text-[#0F172A] text-xl font-bold mt-1">
+            {product.name}
+          </h3>
+          {product.variant && (
+            <p className="text-[#64748B] text-sm mt-1">
+              Almacenamiento: {product.variant}
+            </p>
+          )}
+          <p className="text-[#1B2D6E] text-2xl font-bold mt-3">
+            {product.priceFormatted}
+          </p>
+
+          <a
+            href={product.whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-5 w-full inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20BD5A] text-white text-sm font-semibold px-4 py-3 rounded-xl transition-colors"
+          >
+            <MessageCircle className="w-4 h-4" />
+            Consultar por WhatsApp
+          </a>
+        </div>
+      </motion.div>
+    </motion.div>
   );
 }

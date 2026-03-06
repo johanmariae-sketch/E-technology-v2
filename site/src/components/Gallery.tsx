@@ -190,6 +190,73 @@ function ProductCard({ product, onImageClick }: { product: Product; onImageClick
   );
 }
 
+type ColorOption = { name: string; hex: string; filter: string };
+
+const productColors: Record<string, ColorOption[]> = {
+  "iPhone 17 Pro Max": [
+    { name: "Cosmic Orange", hex: "#C87533", filter: "" },
+    { name: "Natural Titanium", hex: "#B0AFA7", filter: "hue-rotate(180deg) saturate(0.3) brightness(1.2)" },
+    { name: "Dark Titanium", hex: "#3B3B3D", filter: "saturate(0) brightness(0.6)" },
+    { name: "White Titanium", hex: "#E8E5DF", filter: "saturate(0) brightness(1.4)" },
+  ],
+  "iPhone 17 Pro": [
+    { name: "Cosmic Orange", hex: "#C87533", filter: "" },
+    { name: "Natural Titanium", hex: "#B0AFA7", filter: "hue-rotate(180deg) saturate(0.3) brightness(1.2)" },
+    { name: "Dark Titanium", hex: "#3B3B3D", filter: "saturate(0) brightness(0.6)" },
+    { name: "White Titanium", hex: "#E8E5DF", filter: "saturate(0) brightness(1.4)" },
+  ],
+  "iPhone 17 Air": [
+    { name: "Starlight", hex: "#E8DFD0", filter: "" },
+    { name: "Midnight", hex: "#1D1D1F", filter: "saturate(0) brightness(0.4)" },
+    { name: "Green", hex: "#C3D4C7", filter: "hue-rotate(90deg) saturate(0.5)" },
+    { name: "Blue", hex: "#A7BDD3", filter: "hue-rotate(180deg) saturate(0.6)" },
+  ],
+  "iPhone 17": [
+    { name: "Lavender", hex: "#C8B4D4", filter: "" },
+    { name: "Green", hex: "#B3CEB5", filter: "hue-rotate(70deg) saturate(0.7)" },
+    { name: "Pink", hex: "#F0C4C8", filter: "hue-rotate(-30deg) saturate(0.8)" },
+    { name: "Starlight", hex: "#E8DFD0", filter: "saturate(0.2) brightness(1.3)" },
+    { name: "Black", hex: "#1D1D1F", filter: "saturate(0) brightness(0.4)" },
+  ],
+  "iPhone 16 Pro Max": [
+    { name: "Desert Titanium", hex: "#B5946A", filter: "" },
+    { name: "Natural Titanium", hex: "#B0AFA7", filter: "saturate(0.3) brightness(1.1)" },
+    { name: "White Titanium", hex: "#E8E5DF", filter: "saturate(0) brightness(1.4)" },
+    { name: "Black Titanium", hex: "#3B3B3D", filter: "saturate(0) brightness(0.5)" },
+  ],
+  "iPhone 16 Pro": [
+    { name: "Desert Titanium", hex: "#B5946A", filter: "" },
+    { name: "Natural Titanium", hex: "#B0AFA7", filter: "saturate(0.3) brightness(1.1)" },
+    { name: "White Titanium", hex: "#E8E5DF", filter: "saturate(0) brightness(1.4)" },
+    { name: "Black Titanium", hex: "#3B3B3D", filter: "saturate(0) brightness(0.5)" },
+  ],
+  "iPhone 16 Plus": [
+    { name: "Ultramarine", hex: "#5B6CC7", filter: "" },
+    { name: "Teal", hex: "#6BA0A0", filter: "hue-rotate(40deg)" },
+    { name: "Pink", hex: "#E8A0B0", filter: "hue-rotate(-60deg) saturate(0.8)" },
+    { name: "White", hex: "#E8E5DF", filter: "saturate(0) brightness(1.4)" },
+    { name: "Black", hex: "#1D1D1F", filter: "saturate(0) brightness(0.4)" },
+  ],
+  "iPhone 16": [
+    { name: "Ultramarine", hex: "#5B6CC7", filter: "" },
+    { name: "Teal", hex: "#6BA0A0", filter: "hue-rotate(40deg)" },
+    { name: "Pink", hex: "#E8A0B0", filter: "hue-rotate(-60deg) saturate(0.8)" },
+    { name: "White", hex: "#E8E5DF", filter: "saturate(0) brightness(1.4)" },
+    { name: "Black", hex: "#1D1D1F", filter: "saturate(0) brightness(0.4)" },
+  ],
+  "AirPods Max": [
+    { name: "Starlight", hex: "#E8DFD0", filter: "" },
+    { name: "Midnight", hex: "#1D1D1F", filter: "saturate(0) brightness(0.4)" },
+    { name: "Blue", hex: "#7BA3C7", filter: "hue-rotate(170deg) saturate(0.7)" },
+    { name: "Purple", hex: "#B4A0C8", filter: "hue-rotate(220deg) saturate(0.6)" },
+    { name: "Orange", hex: "#E8A070", filter: "hue-rotate(-20deg) saturate(1.2)" },
+  ],
+};
+
+function getProductColors(product: Product): ColorOption[] {
+  return productColors[product.name] || [];
+}
+
 function getProductSpecs(product: Product) {
   const specs: { label: string; value: string }[] = [];
   specs.push({ label: "Modelo", value: product.name });
@@ -210,6 +277,9 @@ function getProductSpecs(product: Product) {
 
 function ProductModal({ product, onClose }: { product: Product; onClose: () => void }) {
   const specs = getProductSpecs(product);
+  const colors = getProductColors(product);
+  const [selectedColorIndex, setSelectedColorIndex] = useState(0);
+  const activeColor = colors[selectedColorIndex];
 
   return (
     <motion.div
@@ -242,7 +312,8 @@ function ProductModal({ product, onClose }: { product: Product; onClose: () => v
               src={product.image}
               alt={product.fullName}
               fill
-              className="object-contain p-8"
+              className="object-contain p-8 transition-[filter] duration-300"
+              style={activeColor?.filter ? { filter: activeColor.filter } : undefined}
               sizes="(max-width: 768px) 100vw, 384px"
             />
             {product.isNew && (
@@ -273,6 +344,30 @@ function ProductModal({ product, onClose }: { product: Product; onClose: () => v
               <p className="text-[#1B2D6E] text-2xl sm:text-3xl font-bold mt-4">
                 {product.priceFormatted}
               </p>
+
+              {/* Color selector */}
+              {colors.length > 0 && (
+                <div className="mt-4">
+                  <p className="text-[#64748B] text-xs font-medium mb-2">
+                    Color: <span className="text-[#0F172A] font-semibold">{activeColor?.name}</span>
+                  </p>
+                  <div className="flex gap-2">
+                    {colors.map((color, i) => (
+                      <button
+                        key={color.name}
+                        onClick={() => setSelectedColorIndex(i)}
+                        title={color.name}
+                        className={`w-7 h-7 rounded-full border-2 transition-all ${
+                          i === selectedColorIndex
+                            ? "border-[#3B7DFF] scale-110 shadow-md"
+                            : "border-[#E2EAFF] hover:border-[#94A3B8]"
+                        }`}
+                        style={{ backgroundColor: color.hex }}
+                      />
+                    ))}
+                  </div>
+                </div>
+              )}
 
               {/* Specs table */}
               <div className="mt-5 space-y-0 border border-[#E2EAFF] rounded-xl overflow-hidden">

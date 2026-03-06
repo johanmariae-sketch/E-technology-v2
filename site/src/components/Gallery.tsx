@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, Sparkles, X } from "lucide-react";
+import { MessageCircle, Sparkles, X, Star, Eye } from "lucide-react";
 import Image from "next/image";
 import type { Product, ProductCatalog } from "@/types/content";
 import rawCatalog from "@/data/products.json";
@@ -153,27 +153,64 @@ function ProductCard({ product, onImageClick }: { product: Product; onImageClick
           </p>
         )}
 
+        {/* Stars */}
+        <div className="flex items-center gap-0.5 mt-1.5">
+          {[1, 2, 3, 4, 5].map((star) => (
+            <Star key={star} className="w-3 h-3 fill-[#FBBF24] text-[#FBBF24]" />
+          ))}
+          <span className="text-[#64748B] text-[10px] ml-1">5.0</span>
+        </div>
+
         {/* Price */}
         <p className="text-[#1B2D6E] text-base sm:text-lg font-bold mt-2">
           {product.priceFormatted}
         </p>
 
-        {/* CTA */}
-        <a
-          href={product.whatsappUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-3 inline-flex items-center justify-center gap-1.5 bg-[#25D366] hover:bg-[#20BD5A] text-white text-xs font-semibold px-3 py-2 rounded-xl transition-colors"
-        >
-          <MessageCircle className="w-3.5 h-3.5" />
-          Consultar
-        </a>
+        {/* Actions */}
+        <div className="flex flex-col gap-1.5 mt-3">
+          <button
+            onClick={onImageClick}
+            className="inline-flex items-center justify-center gap-1.5 bg-[#1B2D6E] hover:bg-[#0F1B3D] text-white text-xs font-semibold px-3 py-2 rounded-xl transition-colors"
+          >
+            <Eye className="w-3.5 h-3.5" />
+            Ver detalles
+          </button>
+          <a
+            href={product.whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-1.5 bg-[#25D366] hover:bg-[#20BD5A] text-white text-xs font-semibold px-3 py-2 rounded-xl transition-colors"
+          >
+            <MessageCircle className="w-3.5 h-3.5" />
+            Consultar
+          </a>
+        </div>
       </div>
     </div>
   );
 }
 
+function getProductSpecs(product: Product) {
+  const specs: { label: string; value: string }[] = [];
+  specs.push({ label: "Modelo", value: product.name });
+  if (product.variant) {
+    specs.push({ label: "Almacenamiento", value: product.variant });
+  }
+  specs.push({ label: "Categoria", value: product.category === "phones" ? "Smartphone" : "Audio" });
+  if (product.category === "phones") {
+    specs.push({ label: "Condicion", value: "Nuevo, sellado" });
+    specs.push({ label: "Garantia", value: "Garantia oficial Apple" });
+  } else {
+    specs.push({ label: "Condicion", value: "Nuevo, sellado" });
+    specs.push({ label: "Conectividad", value: "Bluetooth 5.3" });
+  }
+  specs.push({ label: "Envio", value: "A todo el pais" });
+  return specs;
+}
+
 function ProductModal({ product, onClose }: { product: Product; onClose: () => void }) {
+  const specs = getProductSpecs(product);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -183,11 +220,11 @@ function ProductModal({ product, onClose }: { product: Product; onClose: () => v
       onClick={onClose}
     >
       <motion.div
-        initial={{ opacity: 0, scale: 0.9, y: 20 }}
+        initial={{ opacity: 0, scale: 0.95, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
-        exit={{ opacity: 0, scale: 0.9, y: 20 }}
+        exit={{ opacity: 0, scale: 0.95, y: 20 }}
         transition={{ type: "spring", duration: 0.5 }}
-        className="relative bg-white rounded-3xl overflow-hidden max-w-lg w-full shadow-2xl"
+        className="relative bg-white rounded-3xl overflow-hidden max-w-3xl w-full shadow-2xl max-h-[90vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close button */}
@@ -198,48 +235,72 @@ function ProductModal({ product, onClose }: { product: Product; onClose: () => v
           <X className="w-4 h-4 text-[#0F172A]" />
         </button>
 
-        {/* Image */}
-        <div className="relative aspect-square bg-gradient-to-br from-[#F8FAFF] to-[#EEF2FF]">
-          <Image
-            src={product.image}
-            alt={product.fullName}
-            fill
-            className="object-contain p-8"
-            sizes="(max-width: 512px) 100vw, 512px"
-          />
-          {product.isNew && (
-            <span className="absolute top-4 left-4 inline-flex items-center gap-1 bg-[#10B981] text-white text-xs font-bold px-3 py-1 rounded-lg uppercase tracking-wider">
-              <Sparkles className="w-3 h-3" /> Nuevo
-            </span>
-          )}
-        </div>
+        <div className="flex flex-col md:flex-row">
+          {/* Image — left side */}
+          <div className="relative aspect-square md:w-1/2 flex-shrink-0 bg-gradient-to-br from-[#F8FAFF] to-[#EEF2FF]">
+            <Image
+              src={product.image}
+              alt={product.fullName}
+              fill
+              className="object-contain p-8"
+              sizes="(max-width: 768px) 100vw, 384px"
+            />
+            {product.isNew && (
+              <span className="absolute top-4 left-4 inline-flex items-center gap-1 bg-[#10B981] text-white text-xs font-bold px-3 py-1 rounded-lg uppercase tracking-wider">
+                <Sparkles className="w-3 h-3" /> Nuevo
+              </span>
+            )}
+          </div>
 
-        {/* Details */}
-        <div className="p-6">
-          <span className="text-[#3B7DFF] text-xs font-semibold font-[family-name:var(--font-mono)] uppercase tracking-wider">
-            {categoryLabels[product.category] || product.category}
-          </span>
-          <h3 className="text-[#0F172A] text-xl font-bold mt-1">
-            {product.name}
-          </h3>
-          {product.variant && (
-            <p className="text-[#64748B] text-sm mt-1">
-              Almacenamiento: {product.variant}
-            </p>
-          )}
-          <p className="text-[#1B2D6E] text-2xl font-bold mt-3">
-            {product.priceFormatted}
-          </p>
+          {/* Details — right side */}
+          <div className="p-6 md:w-1/2 flex flex-col justify-between">
+            <div>
+              <span className="text-[#3B7DFF] text-xs font-semibold font-[family-name:var(--font-mono)] uppercase tracking-wider">
+                {categoryLabels[product.category] || product.category}
+              </span>
+              <h3 className="text-[#0F172A] text-xl sm:text-2xl font-bold mt-1">
+                {product.fullName}
+              </h3>
 
-          <a
-            href={product.whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-5 w-full inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20BD5A] text-white text-sm font-semibold px-4 py-3 rounded-xl transition-colors"
-          >
-            <MessageCircle className="w-4 h-4" />
-            Consultar por WhatsApp
-          </a>
+              {/* Stars */}
+              <div className="flex items-center gap-1 mt-2">
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <Star key={star} className="w-4 h-4 fill-[#FBBF24] text-[#FBBF24]" />
+                ))}
+                <span className="text-[#64748B] text-xs ml-1">5.0</span>
+              </div>
+
+              <p className="text-[#1B2D6E] text-2xl sm:text-3xl font-bold mt-4">
+                {product.priceFormatted}
+              </p>
+
+              {/* Specs table */}
+              <div className="mt-5 space-y-0 border border-[#E2EAFF] rounded-xl overflow-hidden">
+                {specs.map((spec, i) => (
+                  <div
+                    key={spec.label}
+                    className={`flex justify-between px-4 py-2.5 text-sm ${
+                      i % 2 === 0 ? "bg-[#F8FAFF]" : "bg-white"
+                    }`}
+                  >
+                    <span className="text-[#64748B] font-medium">{spec.label}</span>
+                    <span className="text-[#0F172A] font-semibold text-right">{spec.value}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* CTA */}
+            <a
+              href={product.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 w-full inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20BD5A] text-white text-sm font-semibold px-4 py-3.5 rounded-xl transition-colors"
+            >
+              <MessageCircle className="w-4 h-4" />
+              Consultar por WhatsApp
+            </a>
+          </div>
         </div>
       </motion.div>
     </motion.div>
